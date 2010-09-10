@@ -10,13 +10,15 @@ device=`xinput list --short | grep -i "Wacom.*Pad" | sed "s|.*id=\([0-9]*\).*|\1
 #device=12
 
 
-kde_right_click="SHIFT F10" # xdotool click 3
-kde_toggle_touch="SHIFT F9" # /home/nicolas/fichiers/scripts/wacom.sh
+# Keys
+kde_right_click="CTRL SHIFT F10" # xdotool click 3
+kde_toggle_touch="CTRL SHIFT F9" # /home/nicolas/fichiers/scripts/wacom.sh
 xournal_toggle_shape_recognizer="CONTROL SHIFT s"
+pageup="Prior"
+pagedown="Next"
 
 
-xsetwacom set "$device" button1 "key ${kde_toggle_touch}"
-#xsetwacom set "$device" button3 "key
-xsetwacom set "$device" button3 "key ${kde_right_click}"
-xsetwacom set "$device" button4 "key ${xournal_toggle_shape_recognizer}"
-
+xsetwacom set "$device" button1 "key ${kde_right_click}"
+xsetwacom set "$device" button2 "key ${pageup}"
+xsetwacom set "$device" button3 "key ${pagedown}"
+xsetwacom set "$device" button4 "key ${kde_toggle_touch}"
