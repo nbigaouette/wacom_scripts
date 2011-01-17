@@ -8,11 +8,18 @@ device=`xinput list --short | grep -i "Wacom.*Pad" | sed "s|.*id=\([0-9]*\).*|\1
 
 STATUS=`xsetwacom get "$device" touch`
 
+#icon="system"
+duration="1000"
+
 if [[ "$STATUS" == "off" ]]; then
     echo "Touch was OFF, enabling."
+    icon="/home/nicolas/fichiers/scripts/wacom_scripts.git/touchpad-enable-icon.png"
+    notify-send -i ${icon} -t ${duration} "Wacom Touchpad enabled"
     xsetwacom set "$device" touch on
 else
     echo "Touch was ON, disabling."
+    icon="/home/nicolas/fichiers/scripts/wacom_scripts.git/touchpad-disable-icon.png"
+    notify-send -i ${icon} -t ${duration} "Wacom Touchpad disabled"
     xsetwacom set "$device" touch off
 fi
 
