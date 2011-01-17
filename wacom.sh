@@ -26,4 +26,5 @@ xsetwacom set "${device}" ${button_middle_top}      "${pageup}"
 xsetwacom set "${device}" ${button_middle_bottom}   "${pagedown}"
 xsetwacom set "${device}" ${button_bottom}          "key ${key_shortcut_toggle_touch}"
 
-
+# Make sure the gestures are enabled
+xsetwacom set "${device}" "Gesture" "on"
