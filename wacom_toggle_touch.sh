@@ -6,6 +6,13 @@
 device=`xinput list --short | grep -i "Wacom.*Pad" | sed "s|.*id=\([0-9]*\).*|\1|g"`
 #device=12
 
+echo "Device: $device"
+
+if [[ "$device" == "" ]]; then
+    echo "Device not found!"
+    exit
+fi
+
 STATUS=`xsetwacom get "$device" touch`
 
 #icon="system"
