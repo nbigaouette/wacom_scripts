@@ -7,6 +7,8 @@
 #device=`xinput list --short | grep -i "Wacom.*Pad" | sed "s|.*id=\([0-9]*\).*|\1|g"`
 device="Wacom Bamboo 2FG 4x5 Finger pad"
 
+notify-send -i "/home/nicolas/fichiers/scripts/wacom_scripts.git/tablet.png" -t "1000" "Configuring Wacom Tablet..."
+
 # Keys
 key_shortcut_right_click="CTRL SHIFT F10" # xdotool click 3
 key_shortcut_toggle_touch="CTRL SHIFT F9" # /home/nicolas/fichiers/scripts/wacom.sh
@@ -27,4 +29,6 @@ xsetwacom set "${device}" ${button_middle_bottom}   "${pagedown}"
 xsetwacom set "${device}" ${button_bottom}          "key ${key_shortcut_toggle_touch}"
 
 # Make sure the gestures are enabled
-xsetwacom set "${device}" "Gesture" "on"
+#xsetwacom set "${device}" "Gesture" "on"
+# Gesture is broken for now...
+xsetwacom set "${device}" "Gesture" "off"
