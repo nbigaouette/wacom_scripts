@@ -3,22 +3,27 @@
 # http://linuxwacom.sourceforge.net/index.php/howto/xsetwacom
 # http://doc.ubuntu-fr.org/wacom_bamboo_fun
 
-#device=`xinput list --short | grep -i "Wacom.*Pad" | cut -f 1 | sed -e 's|⎜   ↳ ||g'`
-#device="Wacom BambooFun 2FG 4x5 Finger pad"
 # Get ID
-device=`xinput list --short | grep -i "Wacom.*Pad" | sed "s|.*id=\([0-9]*\).*|\1|g"`
-#device=12
-
+#device=`xinput list --short | grep -i "Wacom.*Pad" | sed "s|.*id=\([0-9]*\).*|\1|g"`
+device="Wacom Bamboo 2FG 4x5 Finger pad"
 
 # Keys
-kde_right_click="CTRL SHIFT F10" # xdotool click 3
-kde_toggle_touch="CTRL SHIFT F9" # /home/nicolas/fichiers/scripts/wacom.sh
+key_shortcut_right_click="CTRL SHIFT F10" # xdotool click 3
+key_shortcut_toggle_touch="CTRL SHIFT F9" # /home/nicolas/fichiers/scripts/wacom.sh
 xournal_toggle_shape_recognizer="CONTROL SHIFT s"
-pageup="Prior"
-pagedown="Next"
+#pageup="Prior"
+#pagedown="Next"
+pageup="4" # Mouse button 5
+pagedown="5" # Mouse button 4
+
+button_top="button3"
+button_middle_top="button8"
+button_middle_bottom="button9"
+button_bottom="button1"
+
+xsetwacom set "${device}" ${button_top}             "key ${key_shortcut_right_click}"
+xsetwacom set "${device}" ${button_middle_top}      "${pageup}"
+xsetwacom set "${device}" ${button_middle_bottom}   "${pagedown}"
+xsetwacom set "${device}" ${button_bottom}          "key ${key_shortcut_toggle_touch}"
 
 
-xsetwacom set "$device" button1 "key ${kde_right_click}"
-xsetwacom set "$device" button2 "key ${pageup}"
-xsetwacom set "$device" button3 "key ${pagedown}"
-xsetwacom set "$device" button4 "key ${kde_toggle_touch}"
